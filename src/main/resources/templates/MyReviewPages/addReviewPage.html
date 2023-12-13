@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    dodawnai recenzji
+    <form th:action="@{/addReview/add}" method="post">
+        <div class="form-group">
+            <h2>Dodaj recenzje filmu</h2>
+            <label>Tytuł</label>
+            <input type="text" name="Tytul" required>
+            <label>Reżyser</label>
+            <input type="text" name="Rezyser" required>
+            <label>Gatunek</label>
+            <input type="text" name="Gatunek" required>
+            <label>Plakat</label>
+            <input type="text" name="Plakat" required>
+            <label>Recenzja</label>
+            <input type="text" name="Recenzja" required>
+            <label>Gwiazdki</label>
+            <input type="number" name="Gwiazdki" required>
+            <button type="submit">Dodaj recenzje</button>
+        </div>
+    </form>
+</body>
+</html>

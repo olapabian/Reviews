@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    home page
+<!--    go to addReview page -->
+    <form th:action="@{/home/addReviewForm}" method="post">
+        <div class="form-group">
+            <button type="submit">Dodawanie recenzji</button>
+        </div>
+    </form>
+    <!--    go to myReviews page -->
+    <form th:action="@{/home/myReviewsForm}" method="post">
+        <div class="form-group">
+            <button type="submit">Moje recenzje</button>
+        </div>
+    </form>
+</body>
+</html>
