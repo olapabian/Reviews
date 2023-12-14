@@ -25,14 +25,5 @@ public class MyReviewsControllers {
         model.addAttribute("reviewList", reviewList);
         return "/MyReviewPages/myReviewsPage";
     }
-    @GetMapping("/myReview")
-    public String OneReviewPage(@RequestParam("id") Long id, Model model) {
-        Optional<Review> reviewOptional = reviewRepository.findById(id);
-        if(reviewOptional.isPresent()){
-            Review review = reviewOptional.get();
-            model.addAttribute("review",review);
-        }
-        return "/myReview";
-    }
 
 }

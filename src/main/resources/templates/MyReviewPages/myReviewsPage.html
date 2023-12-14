@@ -12,7 +12,7 @@
     <p th:text="${review.getPlakat()}"></p>
     <p th:text="${review.getReview()}"></p>
     <p th:text="${review.getStars()}"></p>
-    <form th:action="@{/myReviews/myReview}" method="get">
+    <form th:action="@{/myReview}" method="get">
         <input type="hidden" th:name="id" th:value="${review.id}" />
             <button type="submit">Przejdź do recenzji</button>
 
