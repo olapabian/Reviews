@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/adminEdycja}" method="post">
+    <label>Imie</label>
+    <input type="text" name="Imie" th:value="${zwierze.getImie() ?: 'Wartość domyślna'}" required>
+    <label>NrKojca</label>
+    <input type="text" name="NrKojca" th:value="${zwierze.getNrKojca() ?: 'Wartość domyślna'}"required>
+
+
+
+
+    <button type="submit">Zapisz</button>
+</form>
+
+</body>
+</html>
