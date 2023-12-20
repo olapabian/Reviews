@@ -3,14 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/src/main/resources/templates/style/styles.css"/>
 </head>
 <body>
-    hello page
-    zaloguj
-    <form th:action="@{/signInForm}" method="post">
-        <div class="form-group">
-            <button type="submit">Zaloguj się</button>
+    <div class="container"> 
+
+        <div class="item1">
+        <h1>Recenzjomacz</h1>
         </div>
-    </form>
+
+        <div class="item2">
+            <h2 class="zaloguj">Aby uzyskać dostęp do swoich danych musisz się zalogować</h2>
+            <br>
+            <form th:action="@{/signInForm}" method="post">
+                <div class="form-group">
+                    <button type="submit">Zaloguj się</button>
+                    <p></p>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+
+    <footer class="wrapper">Aleksandra Pabian, Julia Grzankowska</footer>
+
 </body>
 </html>
