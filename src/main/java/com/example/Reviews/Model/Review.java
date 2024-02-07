@@ -14,11 +14,12 @@ import lombok.Setter;
 public class Review {
     @GeneratedValue
     @Id
+    @Column(name = "review_id", nullable = false)
     private Long id;
-    private String title;
-    private String rezyser;
-    private String gatunek;
-    private String plakat;
-    private String review;
-    private int stars; //1-10
+
+    @Column(name = "text", nullable = false)
+    private String text;
+
+    @Column(name = "rate", nullable = false)
+    private Long rate; //1-10 stars
 }
