@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,20 +32,22 @@ public class MyReviewsControllers {
 //        model.addAttribute("movieList",movieList);
 //        return "/MyReviewPages/myReviewsPage";
 //    }
-    @GetMapping
-    public String MyReviewsPage(Model model, HttpSession httpSession,
-                                @RequestParam(defaultValue = "0") int page,
-                                @RequestParam(defaultValue = "3") int size) {
+@GetMapping
+public String MyReviewsPage(Model model, HttpSession httpSession,
+                            @RequestParam(defaultValue = "0") int page,
+                            @RequestParam(defaultValue = "3") int size,
+                            @RequestParam(defaultValue = "title_ASC") String sort) {
 
-        // Tworzymy obiekt Pageable, który określa numer strony oraz ilość elementów na stronie
-        Pageable pageable = PageRequest.of(page, size);
+    // Tworzymy obiekt Pageable, który określa numer strony, ilość elementów na stronie oraz sposób sortowania
+    Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.fromString(sort.substring(sort.lastIndexOf("_") + 1)), sort.substring(0, sort.lastIndexOf("_"))));
 
-        // Pobieramy stronę recenzji z repozytorium
-        Page<Movie> moviePage = movieRepository.findAll(pageable);
+    // Pobieramy stronę recenzji z repozytorium, uwzględniając ustawione sortowanie
+    Page<Movie> moviePage = movieRepository.findAll(pageable);
 
-        // Dodajemy stronę recenzji do modelu
-        model.addAttribute("movieList", moviePage);
+    // Dodajemy stronę recenzji do modelu
+    model.addAttribute("movieList", moviePage);
 
-        return "/MyReviewPages/myReviewsPage";
-    }
+    return "/MyReviewPages/myReviewsPage";
+}
+
 }

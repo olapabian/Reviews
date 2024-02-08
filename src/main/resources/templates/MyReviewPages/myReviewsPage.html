@@ -13,6 +13,16 @@
         <option value="5">5</option>
         <option value="10">10</option>
     </select>
+
+    <!-- Pole wyboru dla sposobu sortowania -->
+    <label for="sort">Sortowanie:</label>
+    <select id="sort" name="sort">
+        <option value="title_ASC">Tytuł (rosnąco)</option>
+        <option value="title_DESC">Tytuł (malejąco)</option>
+        <option value="releaseYear_ASC">Rok wydania (rosnąco)</option>
+        <option value="releaseYear_DESC">Rok wydania (malejąco)</option>
+    </select>
+
     <button type="submit">Ustaw</button>
 </form>
 <div th:each="movie:${movieList}">
