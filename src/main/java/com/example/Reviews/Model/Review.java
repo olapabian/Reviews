@@ -6,14 +6,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-@Entity
 public class Review {
-    @GeneratedValue
     @Id
+    @GeneratedValue
     @Column(name = "review_id", nullable = false)
     private Long id;
 
@@ -23,3 +23,4 @@ public class Review {
     @Column(name = "rate", nullable = false)
     private Long rate; //1-10 stars
 }
+

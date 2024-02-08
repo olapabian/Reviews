@@ -7,18 +7,19 @@
 <body>
     recenzja pojedyncza
     <label>Tytul</label>
-<!--    <label th:text="${review.getTitle()}" class="text"></label>-->
-<!--    <p th:text="${review.getRezyser()}"></p>-->
-<!--    <p th:text="${review.getGatunek()}"></p>-->
-<!--    <p th:text="${review.getPlakat()}"></p>-->
-<!--    <p th:text="${review.getReview()}"></p>-->
-<!--    <p th:text="${review.getStars()}"></p>-->
+    <p th:text="${movie.getTitle()}"></p>
+    <p th:text="${review.getText()}"></p>
+    <p th:text="${review.getRate()}"></p>
+<!--    <p th:text="${phothos.get(0).getUrl()}"></p>-->
+
+<!--    <img th:src="${phothos.get(0).getUrl()}" alt="Opis obrazu" />-->
+<!--    nie dziala to img-->
     <form th:action="@{/myReview/deleteReview}" method="post">
-        <input type="hidden" th:name="id" th:value="${review.id}" />
+        <input type="hidden" th:name="id" th:value="${movie.id}" />
         <button type="submit">Usuń recenzje</button>
     </form>
-    <form th:action="@{/editReview}" method="get">
-        <input type="hidden" th:name="id" th:value="${review.id}" />
+    <form th:action="@{/editReviewPage}" method="get">
+        <input type="hidden" th:name="id" th:value="${movie.id}" />
         <button type="submit">Edytuj recenzje</button>
     </form>
 </body>

@@ -1,6 +1,8 @@
 package com.example.Reviews.Controllers.MyReviewControllers;
 
+import com.example.Reviews.Model.Movie;
 import com.example.Reviews.Model.Review;
+import com.example.Reviews.Repositories.MovieRepository;
 import com.example.Reviews.Repositories.ReviewRepository;
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
@@ -19,10 +21,11 @@ import java.util.Optional;
 @RequestMapping("/myReviews")
 public class MyReviewsControllers {
     private final ReviewRepository reviewRepository;
+    private final MovieRepository movieRepository;
     @GetMapping
     public String MyReviewsPage(Model model, HttpSession httpSession, Review review) {
-        List<Review> reviewList = reviewRepository.findAll();
-        model.addAttribute("reviewList", reviewList);
+        List<Movie> movieList = movieRepository.findAll();
+        model.addAttribute("movieList",movieList);
         return "/MyReviewPages/myReviewsPage";
     }
 

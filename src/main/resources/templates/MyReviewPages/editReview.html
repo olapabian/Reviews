@@ -5,15 +5,55 @@
     <title>Title</title>
 </head>
 <body>
-<form th:action="@{/adminEdycja}" method="post">
-    <label>Imie</label>
-    <input type="text" name="Imie" th:value="${zwierze.getImie() ?: 'Wartość domyślna'}" required>
-    <label>NrKojca</label>
-    <input type="text" name="NrKojca" th:value="${zwierze.getNrKojca() ?: 'Wartość domyślna'}"required>
+<form th:action="@{/editReview}" method="post">
+<!--    <label>Imie</label>-->
+<!--    <input type="text" name="Imie" th:value="${zwierze.getImie() ?: 'Wartość domyślna'}" required>-->
+<!--    <label>NrKojca</label>-->
+<!--    <input type="text" name="NrKojca" th:value="${zwierze.getNrKojca() ?: 'Wartość domyślna'}"required>-->
+    <div class="form-group">
+        <h2>Edytuj recenzje filmu</h2>
+        <label>Tytuł</label>
+        <input type="text" name="Title" th:value="${movie.getTitle() ?: 'Wartość domyślna'}" required>
+
+        <label>Reżyser</label>
+        <input type="text" name="Director" th:value="${movie.getDirector() ?: 'Wartość domyślna'}"required>
+
+        <label>Opis</label>
+        <input type="text" name="Description" th:value="${movie.getDescription() ?: 'Wartość domyślna'}" required>
+
+        <label>Gatunek</label>
+        <input type="text" name="Genre" th:value="${movie.getGenre() ?: 'Wartość domyślna'}" required>
+
+        <label>Rok wydania</label>
+        <input type="text" name="ReleaseYear" th:value="${movie.getReleaseYear() ?: 'Wartość domyślna'}"required>
+
+        <label>Plakat</label>
+        <input type="text" name="PosterImg" th:value="${movie.getPosterImg() ?: 'Wartość domyślna'}" required>
 
 
+        <label>Recenzja</label>
+        <input type="text" name="Text" th:value="${review.getText() ?: 'Wartość domyślna'}" required>
+
+        <label>Ocena w formie gwiazdek</label>
+        <input type="number" name="Rate" th:value="${review.getRate() ?: 'Wartość domyślna'}" required>
+
+        <!--            <label>Zdjęcia</label>-->
+        <!--            <input type="text" name="Photos[]" required>-->
+        <!--            <input type="text" name="Photos[]" required>-->
+        <!--            <input type="text" name="Photos[]" required>-->
+
+        <label>Zdjęcia</label>
+        <input type="text" name="Photos1" th:value="${photos.get(0).getUrl() ?: 'Wartość domyślna'}" required>
+        <input type="text" name="Photos2" th:value="${photos.get(1).getUrl() ?: 'Wartość domyślna'}" required>
+        <input type="text" name="Photos3" th:value="${photos.get(2).getUrl() ?: 'Wartość domyślna'}" required>
 
 
+    </div>
+    <input type="hidden" th:name="id" th:value="${movie.id}" />
+    <input type="hidden" th:name="review_id" th:value="${review.getId()}" />
+    <input type="hidden" th:name="photo1_id" th:value="${photos.get(0).getId()}" />
+    <input type="hidden" th:name="photo2_id" th:value="${photos.get(2).getId()}" />
+    <input type="hidden" th:name="photo3_id" th:value="${photos.get(1).getId()}" />
     <button type="submit">Zapisz</button>
 </form>
 
