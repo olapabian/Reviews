@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/style/styles.css"/>
+</head>
+<body>
+
+<form action="@{/login}" method="post">
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username"><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password"><br><br>
+    <input type="submit" value="Submit">
+    <div th:if="${param.error}" class="alert alert-error">
+        Invalid username and password.
+    </div>
+</form>
+
+</body>
+</html>

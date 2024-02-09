@@ -5,14 +5,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
-@RequestMapping("/")
 public class HelloController {
-    @GetMapping
+    @GetMapping("/helloPage")
     public String HelloPage() {
         return "/HomePages/helloPage";
     }
-    @PostMapping("/signInForm")
-    public String submitForm( ) {
-            return "redirect:/home";
+
+    @PostMapping("/login")
+    public String submit( ) {
+            return "redirect:/login";
     }
 }

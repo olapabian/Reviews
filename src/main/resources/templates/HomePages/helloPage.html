@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="/src/main/resources/templates/style/styles.css"/>
+    <link rel="stylesheet" href="/style/styles.css"/>
 </head>
 <body>
     <div class="container"> 
@@ -12,14 +12,16 @@
         <h1>Recenzjomacz</h1>
         </div>
 
+        <div>
+            <p>Tutaj znajduje się wszelkie info na temat naszej strony:</p>
+            <p>bla bla bla gówno</p>
+        </div>
+
         <div class="item2">
             <h2 class="zaloguj">Aby uzyskać dostęp do swoich danych musisz się zalogować</h2>
             <br>
-            <form th:action="@{/signInForm}" method="post">
-                <div class="form-group">
-                    <button type="submit">Zaloguj się</button>
-                    <p></p>
-                </div>
+            <form action="/loginPage" method="post">
+                <input type="submit" value="Przejdź dalej">
             </form>
             
         </div>
