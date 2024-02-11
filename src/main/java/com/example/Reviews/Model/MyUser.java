@@ -9,13 +9,13 @@ import org.springframework.data.annotation.Id;
 
 import java.util.List;
 
-
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 public class MyUser {
+
     @Id
     @GeneratedValue
     @Column(name = "user_id", nullable = false)
@@ -27,18 +27,20 @@ public class MyUser {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "user_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
+//    @Column(name = "confirm_password", nullable = false)
+//    private String confirmPassword;
+
+//    @ManyToMany(fetch = FetchType.EAGER)
+//    @JoinTable(
+//            name = "user_roles",
+//            joinColumns = @JoinColumn(name = "user_id"),
+//            inverseJoinColumns = @JoinColumn(name = "role_id")
+//    )
+
+
+    //WYBACZ NIE UMIEM W TO :(((
 
     @Column
     private List<String> roles;
-
-    public List<String> getRole() {
-        return roles;
-    }
 }
 

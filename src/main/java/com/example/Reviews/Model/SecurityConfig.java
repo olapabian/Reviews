@@ -22,6 +22,7 @@ public class SecurityConfig {
                             .requestMatchers("/helloPage").permitAll() //każdy ma dostęp do helloPage.html
                             .requestMatchers("/login").permitAll() //każdy ma dostęp do login.html
                             .requestMatchers("/style/**").permitAll() //dostęp do css js itp.
+
                             .anyRequest().authenticated() // Wymagane uwierzytelnienia dla innych zasobów
                     )
 
