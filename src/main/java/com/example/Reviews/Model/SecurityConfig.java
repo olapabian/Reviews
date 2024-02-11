@@ -1,6 +1,7 @@
 package com.example.Reviews.Model;
 
-import com.example.Reviews.Repositories.UserRepository;
+import com.example.Reviews.Repositories.MyUserRepository;
+import com.example.Reviews.Services.MyDatabaseUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -43,26 +44,17 @@ public class SecurityConfig {
             return new BCryptPasswordEncoder();
         }
 
-        private UserRepository userRepository;
-        public SecurityConfig(UserRepository myUserRespistory) {
-            this.userRepository = userRepository;
+
+        private final MyUserRepository myUserRepository;
+        public SecurityConfig(MyUserRepository myUserRepository) {
+
+            this.myUserRepository = myUserRepository;
         }
+
         @Bean
         public UserDetailsService userDetailsService() {
-            return (UserDetailsService) new MyDatabaseUserDetailsService(userRepository);
+            return new MyDatabaseUserDetailsService(myUserRepository);
         }
-//        @Bean
-//        public InMemoryUserDetailsManager userDetailsService() {
-//            UserDetails admin = User.withUsername("admin")
-//                    .password(passwordencoder().encode("adminPass"))
-//                    .roles("ADMIN")
-//                    .build();
-//            UserDetails user = User.withUsername("user")
-//                    .password(passwordencoder().encode("userPass"))
-//                    .roles("USER")
-//                    .build();
-//            return new InMemoryUserDetailsManager(admin, user);
-//        }
 
 }
 

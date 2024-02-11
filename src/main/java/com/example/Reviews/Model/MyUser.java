@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class User {
+public class MyUser {
     @Id
     @GeneratedValue
     @Column(name = "user_id", nullable = false)
@@ -33,7 +33,12 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
+
+    @Column
     private List<String> roles;
 
+    public List<String> getRole() {
+        return roles;
+    }
 }
 

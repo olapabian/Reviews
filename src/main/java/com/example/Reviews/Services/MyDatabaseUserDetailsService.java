@@ -1,9 +1,9 @@
 package com.example.Reviews.Services;
 
-import com.example.Reviews.Repositories.UserRepository;
+import com.example.Reviews.Model.MyUser;
+import com.example.Reviews.Repositories.MyUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -14,18 +14,21 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService {
+public class MyDatabaseUserDetailsService implements UserDetailsService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private MyUserRepository myUserRepository;
+
+    public MyDatabaseUserDetailsService(MyUserRepository myUserRepository) {
+        this.myUserRepository = myUserRepository;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username)
+        MyUser user = myUserRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
 
-        List<GrantedAuthority> authorities = user.getRoles().stream() //tutaj jest błąd idk
-                .map(SimpleGrantedAuthority::new)
+        List<GrantedAuthority> authorities = user.getRoles().stream()
+                .map(role -> new SimpleGrantedAuthority(role))
                 .collect(Collectors.toList());
 
         return new org.springframework.security.core.userdetails.User(
