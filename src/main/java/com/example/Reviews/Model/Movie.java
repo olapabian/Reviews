@@ -53,7 +53,6 @@ public class Movie {
     @JoinColumn(name = "movie_id")
     private List<Photo> photos;
 
-<<<<<<< HEAD
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "user_movies",
@@ -62,7 +61,4 @@ public class Movie {
     )
     private List<MyUser> users;
 
-
-=======
->>>>>>> 32c33eb846bc164d97b48cece151813d0a2be2ec
 }
