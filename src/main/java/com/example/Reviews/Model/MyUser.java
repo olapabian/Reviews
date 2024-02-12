@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 
 import java.util.List;
 
@@ -15,10 +14,9 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 public class MyUser {
-
     @Id
-    @GeneratedValue
-    @Column(name = "user_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id", nullable = false)
     private Long id;
 
     @Column(name = "username", nullable = false)
@@ -40,7 +38,16 @@ public class MyUser {
 
     //WYBACZ NIE UMIEM W TO :(((
 
-    @Column
-    private List<String> roles;
+    @Column(name = "roles", nullable = false)
+    private String roles;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "user_movies",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "movie_id")
+    )
+    private List<Movie> movies;
+
 }
 

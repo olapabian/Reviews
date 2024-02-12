@@ -53,6 +53,13 @@ public class Movie {
     @JoinColumn(name = "movie_id")
     private List<Photo> photos;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "user_movies",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private List<MyUser> users;
 
 
 }
