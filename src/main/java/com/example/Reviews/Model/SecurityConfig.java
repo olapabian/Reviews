@@ -16,46 +16,42 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-        @Bean
-         public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception { //tu ustawiam wszelkie przekierowywania
-            http
-                    .authorizeRequests(authorize -> authorize
-                            .requestMatchers("/helloPage").permitAll() //każdy ma dostęp do helloPage.html
-                            .requestMatchers("/login").permitAll() //każdy ma dostęp do login.html
-                            .requestMatchers("/style/**").permitAll() //dostęp do css js itp.
-                            .anyRequest().authenticated() // Wymagane uwierzytelnienia dla innych zasobów
-                    )
 
-                    .formLogin(form -> form
-                            .usernameParameter("username")
-                            .passwordParameter("password")
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests(authorize -> authorize
+                        .requestMatchers("/helloPage").permitAll()
+                        .requestMatchers("/login").permitAll()
+                        .requestMatchers("/style/**").permitAll()
+                        .requestMatchers("/register").permitAll() // Zezwolenie dla '/register'
+                        .anyRequest().authenticated()
+                )
+                .formLogin(form -> form
+                        .usernameParameter("username")
+                        .passwordParameter("password")
+                        .loginPage("/login")
+                        .failureUrl("/login?failed")
+                        .loginProcessingUrl("/login")
+                        .defaultSuccessUrl("/homePage")
+                );
+        return http.build();
+    }
 
-                            .loginPage("/login") // Strona logowania
-                            .failureUrl("/login?failed") //jak złe hasło czy coś
-                            .loginProcessingUrl("/login") //processowanie
+    @Bean
+    public static PasswordEncoder passwordencoder() {
+        return new BCryptPasswordEncoder();
+    }
 
-                            .defaultSuccessUrl("/homePage")
-                    );
+    private final MyUserRepository myUserRepository;
 
-            return http.build();
-        }
+    public SecurityConfig(MyUserRepository myUserRepository) {
+        this.myUserRepository = myUserRepository;
+    }
 
-        @Bean
-        public static PasswordEncoder passwordencoder() {
-            return new BCryptPasswordEncoder();
-        }
-
-
-        private final MyUserRepository myUserRepository;
-        public SecurityConfig(MyUserRepository myUserRepository) {
-
-            this.myUserRepository = myUserRepository;
-        }
-
-        @Bean
-        public UserDetailsService userDetailsService() {
-            return new MyDatabaseUserDetailsService(myUserRepository);
-        }
-
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return new MyDatabaseUserDetailsService(myUserRepository);
+    }
 }
 

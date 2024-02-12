@@ -16,9 +16,9 @@ public class RegistrationController {
     private RegistrationService registrationService;
 
     @GetMapping
-    public String submit2(Model model) {
+    public String RegisterPage(Model model) {
         model.addAttribute("userDTO", new MyUserDTO());
-        return "register";
+            return "/HomePages/register";
     }
 
 //    @PostMapping("/register")
