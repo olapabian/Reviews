@@ -3,17 +3,23 @@
 package com.example.Reviews.Services;
 
 import com.example.Reviews.Model.Movie;
+import com.example.Reviews.Model.MyUser;
 import com.example.Reviews.Model.Photo;
 import com.example.Reviews.Model.Review;
 import com.example.Reviews.Repositories.MovieRepository;
+import com.example.Reviews.Repositories.MyUserRepository;
 import com.example.Reviews.Repositories.PhotoRepository;
 import com.example.Reviews.Repositories.ReviewRepository;
+import jakarta.servlet.http.HttpSession;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
 import java.util.List;
 import java.util.Optional;
+@AllArgsConstructor
 
 @Service
 public class MyReviewService {
@@ -21,13 +27,6 @@ public class MyReviewService {
     private final ReviewRepository reviewRepository;
     private final MovieRepository movieRepository;
     private final PhotoRepository photoRepository;
-
-    public MyReviewService(ReviewRepository reviewRepository, MovieRepository movieRepository,
-                           PhotoRepository photoRepository) {
-        this.reviewRepository = reviewRepository;
-        this.movieRepository = movieRepository;
-        this.photoRepository = photoRepository;
-    }
 
     @Transactional
     public String showMyReviewPage(Long id, Model model) {
@@ -51,14 +50,17 @@ public class MyReviewService {
             Optional<Movie> movieOptional = movieRepository.findById(id);
             if (movieOptional.isPresent()) {
                 Movie movie = movieOptional.get();
-                Review review = movie.getReview();
                 List<Photo> photoList = movie.getPhotos();
                 for (Photo photo : photoList) {
                     photoRepository.delete(photo);
                 }
+                Review review = movie.getReview();
                 movieRepository.delete(movie);
-                reviewRepository.delete(review);
+                if (review != null) {
+                    reviewRepository.delete(review);
+                }
             }
         }
     }
+
 }

@@ -25,6 +25,19 @@ public class SecurityConfig {
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/style/**").permitAll()
                         .requestMatchers("/register").permitAll() // Zezwolenie dla '/register'
+                        .requestMatchers("/zarejestruj").permitAll()
+                        //te trzeba będzie później usunąć
+                        .requestMatchers("/helloPage").permitAll()
+                        .requestMatchers("/home").permitAll()
+                        .requestMatchers("/home/addReviewForm").permitAll()
+                        .requestMatchers("/home/myReviewsForm").permitAll()
+                        .requestMatchers("/addReview").permitAll()
+                        .requestMatchers("/addReview/add").permitAll()
+                        .requestMatchers("/editReviewPage").permitAll()
+                        .requestMatchers("/myReview").permitAll()
+                        .requestMatchers("/myReview/deleteReview").permitAll()
+                        .requestMatchers("/myReviews").permitAll()
+                        .requestMatchers("/editReview").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
@@ -33,7 +46,7 @@ public class SecurityConfig {
                         .loginPage("/login")
                         .failureUrl("/login?failed")
                         .loginProcessingUrl("/login")
-                        .defaultSuccessUrl("/homePage")
+                        .defaultSuccessUrl("/home")
                 );
         return http.build();
     }

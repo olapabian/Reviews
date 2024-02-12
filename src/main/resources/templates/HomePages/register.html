@@ -8,19 +8,18 @@
 </head>
 <body>
 <h2>Registration Form</h2>
-<form action="/zarejestruj" method="post">
-    <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <!-- Dodaj komunikat błędu, jeśli nazwa użytkownika jest pusta -->
-        <span th:text="${usernameError}" style="color: red"></span>
-    </div>
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <!-- Dodaj komunikat błędu, jeśli hasło jest puste -->
-        <span th:text="${passwordError}" style="color: red"></span>
-    </div>
+<form th:action="@{/zarejestruj}" method="post">
+
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    <!-- Dodaj komunikat błędu, jeśli nazwa użytkownika jest pusta -->
+    <span th:text="${usernameError}" style="color: red"></span>
+
+    <label for="password">Password:</label>
+    <input type="text" id="password" name="password" required>
+    <!-- Dodaj komunikat błędu, jeśli hasło jest puste -->
+    <span th:text="${passwordError}" style="color: red"></span>
+
     <!--
     <div>
         <label for="confirmPassword">Confirm Password:</label>

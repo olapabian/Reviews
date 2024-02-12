@@ -20,7 +20,7 @@ public class RegistrationService {
     private PasswordEncoder passwordEncoder;
 
     public void registerNewUser(MyUserDTO userDTO) {
-        if (userRepository.findByUsername(userDTO.getUsername()) != null) {
+        if (userRepository.findByUsername(userDTO.getUsername()).stream().toString().isEmpty()) {
             throw new RuntimeException("Użytkownik o podanej nazwie już istnieje");
         }
 

@@ -22,7 +22,7 @@ public class Movie {
     private Long id;
 
     @NotNull
-    @Column(name = "title",nullable = false)
+    @Column(name = "title", nullable = false)
     private String title;
 
     @NotNull
@@ -53,12 +53,9 @@ public class Movie {
     @JoinColumn(name = "movie_id")
     private List<Photo> photos;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "user_movies",
-            joinColumns = @JoinColumn(name = "movie_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
-    )
-    private List<MyUser> users;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private MyUser user;
+
 
 }

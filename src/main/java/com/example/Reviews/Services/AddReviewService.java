@@ -3,11 +3,16 @@
 package com.example.Reviews.Services;
 
 import com.example.Reviews.Model.Movie;
+import com.example.Reviews.Model.MyUser;
 import com.example.Reviews.Model.Photo;
 import com.example.Reviews.Model.Review;
 import com.example.Reviews.Repositories.MovieRepository;
+import com.example.Reviews.Repositories.MyUserRepository;
 import com.example.Reviews.Repositories.PhotoRepository;
 import com.example.Reviews.Repositories.ReviewRepository;
+import jakarta.servlet.http.HttpSession;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,23 +20,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@AllArgsConstructor
 @Service
 public class AddReviewService {
 
     private final ReviewRepository reviewRepository;
     private final MovieRepository movieRepository;
     private final PhotoRepository photoRepository;
+    private final MyUserRepository myUserRepository;
 
-    public AddReviewService(ReviewRepository reviewRepository, MovieRepository movieRepository,
-                            PhotoRepository photoRepository) {
-        this.reviewRepository = reviewRepository;
-        this.movieRepository = movieRepository;
-        this.photoRepository = photoRepository;
-    }
+    @Autowired
+    private HttpSession session;
 
     @Transactional
-    public boolean addReview(Movie movie, Review review, String photos1, String photos2, String photos3) {
-        try {
+    public void addReview(Movie movie, Review review, String photos1, String photos2, String photos3) {
+
+        String username = (String) session.getAttribute("username");
+        Optional<MyUser> myUserOptional = myUserRepository.findByUsername(username);
+        if (myUserOptional.isPresent()) {
+            MyUser myUser = myUserOptional.get();
+            movie.setUser(myUser);
             reviewRepository.save(review);
             movie.setReview(review);
 
@@ -47,12 +55,11 @@ public class AddReviewService {
             }
 
             movie.setPhotos(photoList);
+
             movieRepository.save(movie);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
+
         }
+
     }
 
     private void savePhoto(String photoUrl, Movie movie, List<Photo> photoList) {

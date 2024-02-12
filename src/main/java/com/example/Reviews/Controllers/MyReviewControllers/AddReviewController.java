@@ -16,26 +16,23 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/addReview")
 public class AddReviewController {
 
-        private final AddReviewService addReviewService;
+    private final AddReviewService addReviewService;
 
-        public AddReviewController(AddReviewService addReviewService) {
-                this.addReviewService = addReviewService;
-        }
+    public AddReviewController(AddReviewService addReviewService) {
+        this.addReviewService = addReviewService;
+    }
 
-        @GetMapping
-        public String AddReviewPage() {
-                return "/MyReviewPages/addReviewPage";
-        }
+    @GetMapping
+    public String AddReviewPage() {
+        return "/MyReviewPages/addReviewPage";
+    }
 
-        @PostMapping("/add")
-        public String addForm(Movie movie, Review review, @RequestParam("Photos1") String photos1,
-                              @RequestParam("Photos2") String photos2, @RequestParam("Photos3") String photos3,
-                              RedirectAttributes redirectAttributes) {
-                if (addReviewService.addReview(movie, review, photos1, photos2, photos3)) {
-                        redirectAttributes.addFlashAttribute("successMessage", "Review added successfully!");
-                } else {
-                        redirectAttributes.addFlashAttribute("errorMessage", "Failed to add review. Please try again.");
-                }
-                return "redirect:/myReviews";
-        }
+    @PostMapping("/add")
+    public String addForm(Movie movie, Review review, @RequestParam("Photos1") String photos1,
+                          @RequestParam("Photos2") String photos2, @RequestParam("Photos3") String photos3,
+                          RedirectAttributes redirectAttributes) {
+        addReviewService.addReview(movie, review, photos1, photos2, photos3);
+
+        return "redirect:/myReviews";
+    }
 }
