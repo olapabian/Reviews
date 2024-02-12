@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
+import org.antlr.v4.runtime.misc.NotNull;
 
 import java.util.List;
 
@@ -14,32 +14,28 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "my_user")
 public class MyUser {
-
     @Id
     @GeneratedValue
     @Column(name = "user_id", nullable = false)
     private Long id;
 
-    @Column(name = "username", nullable = false)
+    @NotNull
+    @Column(name = "username")
     private String username;
 
-    @Column(name = "password", nullable = false)
+    @NotNull
+    @Column(name = "password")
     private String password;
+
+//    @Column(name = "reviews")
+//    private List<Review> reviews;
 
 //    @Column(name = "confirm_password", nullable = false)
 //    private String confirmPassword;
 
-//    @ManyToMany(fetch = FetchType.EAGER)
-//    @JoinTable(
-//            name = "user_roles",
-//            joinColumns = @JoinColumn(name = "user_id"),
-//            inverseJoinColumns = @JoinColumn(name = "role_id")
-//    )
-
-
-    //WYBACZ NIE UMIEM W TO :(((
-
+    @NotNull
     @Column
     private List<String> roles;
 }

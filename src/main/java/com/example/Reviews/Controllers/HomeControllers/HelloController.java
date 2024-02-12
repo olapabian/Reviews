@@ -15,4 +15,9 @@ public class HelloController {
     public String submit( ) {
             return "redirect:/login";
     }
+
+    @PostMapping("/register")
+    public String submit2( ) {
+        return "redirect:/register";
+    }
 }

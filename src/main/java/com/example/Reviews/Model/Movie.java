@@ -53,6 +53,4 @@ public class Movie {
     @JoinColumn(name = "movie_id")
     private List<Photo> photos;
 
-
-
 }

@@ -16,7 +16,7 @@ public class RegistrationController {
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         model.addAttribute("userDTO", new MyUserDTO());
-        return "registrationForm";
+        return "register";
     }
 
     @PostMapping("/register")
@@ -24,12 +24,12 @@ public class RegistrationController {
         // Walidacja pól ręcznie
         if (userDTO.getUsername() == null || userDTO.getUsername().isEmpty()) {
             model.addAttribute("usernameError", "Nazwa użytkownika nie może być pusta");
-            return "registrationForm";
+            return "register";
         }
 
         if (userDTO.getPassword() == null || userDTO.getPassword().isEmpty()) {
             model.addAttribute("passwordError", "Hasło nie może być puste");
-            return "registrationForm";
+            return "register";
         }
 
 //        if (!userDTO.getPassword().equals(userDTO.getConfirmPassword())) {

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/styles.css"/>
+    <title>Registration Form</title>
+</head>
+<body>
+<h2>Registration Form</h2>
+<form action="/register" method="post">
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <!-- Dodaj komunikat błędu, jeśli nazwa użytkownika jest pusta -->
+        <span th:text="${usernameError}" style="color: red"></span>
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <!-- Dodaj komunikat błędu, jeśli hasło jest puste -->
+        <span th:text="${passwordError}" style="color: red"></span>
+    </div>
+    <!--
+    <div>
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
+        <span th:text="${passwordMatchError}" style="color: red"></span>
+    </div>
+    -->
+    <button type="submit">Register</button>
+</form>
+</body>
+</html>

@@ -22,5 +22,9 @@ public class Review {
 
     @Column(name = "rate", nullable = false)
     private Long rate; //1-10 stars
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_id")
+//    private MyUser user;
 }
 
