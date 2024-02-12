@@ -46,12 +46,17 @@ public class MyReviewService {
 
     @Transactional
     public void deleteReview(Long id) {
+        System.out.println("kkkkkkkkkkkkkkkkkkkkdsaiocjushbfniuerfgbhireee5rtgddddddddddddddddddddddddddddddddddddddddd");
+        System.out.println(id);
         if (id != null) {
             Optional<Movie> movieOptional = movieRepository.findById(id);
             if (movieOptional.isPresent()) {
                 Movie movie = movieOptional.get();
                 List<Photo> photoList = movie.getPhotos();
                 for (Photo photo : photoList) {
+                    System.out.println(photo.getId());
+                    System.out.println(photo.getUrl());
+                    System.out.println(photo.getMovie_id());
                     photoRepository.delete(photo);
                 }
                 Review review = movie.getReview();

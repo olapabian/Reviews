@@ -19,7 +19,7 @@ public class Photo {
     private Long id;
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "movie_id", nullable = false)
+    @Column(name = "movie_id")
     private Long movie_id;
 
     @Column(name = "photo_url")
@@ -27,5 +27,14 @@ public class Photo {
 
     public Photo(String url) {
         this.url = url;
+    }
+
+    @Override
+    public String toString() {
+        return "Photo{" +
+                "id=" + id +
+                ", movie_id=" + movie_id +
+                ", url='" + url + '\'' +
+                '}';
     }
 }
