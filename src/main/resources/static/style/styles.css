@@ -21,6 +21,7 @@ footer {
 	justify-content: center;
 }
 
+/* tu homePage.html */
 br {
 	color:#fff5f5;
 }
@@ -49,6 +50,13 @@ br {
 	border-radius: 5px;   
 	box-shadow: 0 0 20px white;     
 	background: rgba(0, 0, 0, 0.2);
+	margin: 10px auto;
+}
+
+.przyciski {
+	display:inline-flex;
+	margin: 10px;
+	gap: 10px;
 }
 
 h2 {
@@ -61,15 +69,99 @@ button[type="submit"] {
 	background-color: #9d76d4;
 	padding: 20px;
 	width: 150px;
+	height: 40px;
 	color: #ffffff;
 	text-align: center;
+	line-height: 0px;
 	border: 4px double #cccccc; 
 	border-radius: 10px;
-	font-size: 20px; 
-
+	font-size: 18px; 
+	transition: background-color 0.3s, transform 0.3s;
 }
 
 button[type="submit"]:hover {
 	background-color: #982fc2;
+	transform: scale(1.1);
 }
+
+
+/* tu login.html */
+
+.układ {
+	display:grid;
+	text-align: center;
+}
+
+.logowanie {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.274);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.301);
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+	font-weight: bold;
+    color: #f0c8f8;
+
+}
+
+input[type="text"],
+input[type="password"] {
+	width: 375px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.login {
+	align-items: center;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    flex-basis: 30%; /* Szerokość etykiety */
+}
+
+/* przycisk powrót */
+.powrot {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.powrot button {
+    width: 100px;
+    height: 50px;
+    border: none;
+    border-radius: 15px; /* Zaokrąglenie do uzyskania kształtu okrągłego */
+    background: rgba(58, 110, 158, 0.322);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Dodanie cienia */
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.powrot button:hover {
+    background-color: #1d6b8f;
+    transform: scale(1.1); /* Powiększenie przycisku po najechaniu */
+}
+
+
+
+
+
 
