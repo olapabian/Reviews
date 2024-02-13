@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="/style/styles.css"/>
+    <!-- <link rel="stylesheet" href="/style/styles.css"/> -->
+    <link rel="stylesheet" href="/src/main/resources/static/style/styles.css"/>
 </head>
 <body>
     <div class="container"> 
@@ -13,24 +14,25 @@
         </div>
 
         <div>
-            <p>Tutaj znajduje się wszelkie info na temat naszej strony:</p>
-            <p>bla bla bla gówno</p>
+            <center>
+            <p>Twój prywatny notes do zapisywania i dodawania obejrzanych filmów</p>                
+            </center>
         </div>
+        <br>
 
         <div class="item2">
             <h2 class="zaloguj">Aby uzyskać dostęp do swoich danych musisz się zalogować lub utworzyć nowe konto</h2>
             <br>
-            <form action="/loginPage" method="post">
-                <button type="submit">Login</button>
-            </form>
-        </div>
-        <div>
-            <form action="/register" method="get">
-                <button type="submit">Rejestracja</button>
-            </form>
-            
+            <div class="przyciski">
+                <form action="/loginPage" method="post">
+                    <button type="submit">Login</button>
+                </form>
 
-    </div>
+                <form action="/register" method="get">
+                    <button type="submit">Rejestracja</button>
+                </form>
+        </div>
+
 
     <footer class="wrapper">Aleksandra Pabian, Julia Grzankowska</footer>
 
