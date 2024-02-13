@@ -46,8 +46,8 @@ public class MyReviewService {
 
     @Transactional
     public void deleteReview(Long id) {
-        System.out.println("kkkkkkkkkkkkkkkkkkkkdsaiocjushbfniuerfgbhireee5rtgddddddddddddddddddddddddddddddddddddddddd");
-        System.out.println(id);
+//        System.out.println("kkkkkkkkkkkkkkkkkkkkdsaiocjushbfniuerfgbhireee5rtgddddddddddddddddddddddddddddddddddddddddd");
+//        System.out.println(id);
         if (id != null) {
             Optional<Movie> movieOptional = movieRepository.findById(id);
             if (movieOptional.isPresent()) {
