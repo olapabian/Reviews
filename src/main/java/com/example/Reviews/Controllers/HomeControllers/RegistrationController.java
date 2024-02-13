@@ -47,7 +47,6 @@ public class RegistrationController {
         }
         else {
             model.addAttribute("errorMessage", "Użytkownik o podanej nazwie już istnieje");
-            System.out.println("Gówno nie działa aaaa username");
             return "HomePages/register";
         }
     }
