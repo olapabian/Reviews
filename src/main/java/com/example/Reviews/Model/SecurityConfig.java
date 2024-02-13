@@ -11,6 +11,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+import java.util.Locale;
 
 
 @Configuration
@@ -38,16 +43,18 @@ public class SecurityConfig {
                         .requestMatchers("/myReview/deleteReview").permitAll()
                         .requestMatchers("/myReviews").permitAll()
                         .requestMatchers("/editReview").permitAll()
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()
                 )
                 .formLogin(form -> form
                         .usernameParameter("username")
                         .passwordParameter("password")
+
                         .loginPage("/login")
                         .failureUrl("/login?failed")
-                        .loginProcessingUrl("/login")
+                        .loginProcessingUrl("/login/process")
                         .defaultSuccessUrl("/home")
                 );
+
         return http.build();
     }
 
@@ -66,5 +73,7 @@ public class SecurityConfig {
     public UserDetailsService userDetailsService() {
         return new MyDatabaseUserDetailsService(myUserRepository);
     }
+
+
 }
 

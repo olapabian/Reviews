@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <!-- <link rel="stylesheet" href="/style/styles.css"/> -->
-    <link rel="stylesheet" href="/src/main/resources/static/style/styles.css"/>
+     <link rel="stylesheet" href="/style/styles.css"/>
+<!--   <link rel="stylesheet" href="/src/main/resources/static/style/styles.css"/>-->
 </head>
 <body>
     <div class="powrot">
@@ -19,7 +19,7 @@
         <p>Wpisz swoją nazwę użytkownika i hasło. Jeżeli zapomniałeś/łaś hasła skontaktuj się z administratorem strony</p>
 
         <!--na razie zrobie na moje potrzeby zeby dawalo od razu do home-->
-        <form th:action="@{/home}" class="logowanie" method="post">
+        <form th:action="@{/login/process}" class="logowanie" method="post">
             <div class="form-group">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" autofocus="autofocus" />
@@ -28,12 +28,24 @@
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" />
             </div>
+
+            <div th:if="${param.error}">
+                <p>Invalid username and password.</p>
+            </div>
+
             <div class="login">
                 <button type="submit" value="Log in">Zaloguj</button>
             </div>
             
         </form>
-        
+
+        <a href="?lang=en">English</a>
+        <a href="?lang=pl">Polski</a>
+
+        <element th:text="#{etykieta}"></element>
+        <h1 th:text="#{nazwa}"></h1>
+        <p th:text="#{nazwa.etykiety}"></p>
+
         <!--<form th:action="@{/login}" method="post">-->
         <!--    <label for="username">Username</label>:-->
         <!--    <input type="text" id="username" name="username"-->
