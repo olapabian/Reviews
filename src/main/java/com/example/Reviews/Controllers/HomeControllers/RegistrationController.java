@@ -2,6 +2,7 @@
 package com.example.Reviews.Controllers.HomeControllers;
 
 import com.example.Reviews.Model.MyUserDTO;
+import com.example.Reviews.Repositories.MyUserRepository;
 import com.example.Reviews.Services.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,8 @@ public class RegistrationController {
 
     @Autowired
     private RegistrationService registrationService;
-
+    @Autowired
+    private MyUserRepository userRepository;
     @GetMapping("/register")
     public String RegisterPage(Model model) {
         model.addAttribute("userDTO", new MyUserDTO());
@@ -21,28 +23,33 @@ public class RegistrationController {
     }
 
     @PostMapping("/zarejestruj")
-    public String processRegistrationForm(@RequestParam("username") String username, @RequestParam("password") String password, Model model) {
-        // Walidacja pól ręcznie
-//        if (userDTO.getUsername() == null || userDTO.getUsername().isEmpty()) {
-//            model.addAttribute("usernameError", "Nazwa użytkownika nie może być pusta");
-//            return "register?failed";
-//        }
-//
-//        if (userDTO.getPassword() == null || userDTO.getPassword().isEmpty()) {
-//            model.addAttribute("passwordError", "Hasło nie może być puste");
-//            return "register?failed";
-//        }
-
-
-//        if (!userDTO.getPassword().equals(userDTO.getConfirmPassword())) {
-//            model.addAttribute("passwordMatchError", "Potwierdzenie hasła nie pasuje do hasła");
-//            return "registrationForm";
-//        }
+    public String processRegistrationForm(@RequestParam("username") String username,
+                                          @RequestParam("password") String password,
+                                          Model model) {
+        // Tworzymy nowy obiekt MyUserDTO
         MyUserDTO myUserDTO = new MyUserDTO();
         myUserDTO.setPassword(password);
         myUserDTO.setUsername(username);
-        // Wywołanie serwisu rejestracji
-        registrationService.registerNewUser(myUserDTO);
-        return "redirect:/login";
+
+        // Sprawdzamy poprawność danych
+        if (username == null || username.isEmpty()) {
+            model.addAttribute("usernameError", "Nazwa użytkownika nie może być pusta");
+            return "HomePages/register";
+        }
+
+        if (password == null || password.isEmpty()) {
+            model.addAttribute("passwordError", "Hasło nie może być puste");
+            return "HomePages/register";
+        }
+
+        if(registrationService.registerNewUser(myUserDTO, model)) {
+            return "redirect:/login";
+        }
+        else {
+            model.addAttribute("errorMessage", "Użytkownik o podanej nazwie już istnieje");
+            System.out.println("Gówno nie działa aaaa username");
+            return "HomePages/register";
+        }
     }
+
 }

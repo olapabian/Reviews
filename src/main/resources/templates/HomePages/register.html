@@ -20,13 +20,10 @@
     <!-- Dodaj komunikat błędu, jeśli hasło jest puste -->
     <span th:text="${passwordError}" style="color: red"></span>
 
-    <!--
-    <div>
-        <label for="confirmPassword">Confirm Password:</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" required>
-        <span th:text="${passwordMatchError}" style="color: red"></span>
-    </div>
-    -->
+    <!-- Dodaj komunikat błędu, jeśli wystąpił błąd rejestracji -->
+    <span th:text="${errorMessage}" style="color: red"></span>
+
+
     <button type="submit">Register</button>
 </form>
 </body>
