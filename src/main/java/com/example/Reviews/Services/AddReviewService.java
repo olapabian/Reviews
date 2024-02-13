@@ -62,7 +62,7 @@ public class AddReviewService {
 
     }
 
-    private void savePhoto(String photoUrl, Movie movie, List<Photo> photoList) {
+    public void savePhoto(String photoUrl, Movie movie, List<Photo> photoList) {
         Photo photo = new Photo();
         photo.setUrl(photoUrl);
         photo.setMovie_id(movie.getId());
