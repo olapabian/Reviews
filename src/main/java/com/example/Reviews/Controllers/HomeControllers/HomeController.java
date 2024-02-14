@@ -12,12 +12,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/home")
 public class HomeController {
 
-    @Autowired
-    private HttpSession session;
+
 
     @PostMapping
-    public String HomePage(@RequestParam("username") String username) {
-        session.setAttribute("username", username);
+    public String HomePage() {
         return "redirect:/home";
     }
     @GetMapping

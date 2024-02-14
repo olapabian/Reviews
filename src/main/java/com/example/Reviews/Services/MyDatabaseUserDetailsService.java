@@ -2,6 +2,7 @@ package com.example.Reviews.Services;
 
 import com.example.Reviews.Model.MyUser;
 import com.example.Reviews.Repositories.MyUserRepository;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,7 +19,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class MyDatabaseUserDetailsService implements UserDetailsService {
-
+    @Autowired
+    private HttpSession session;
     private MyUserRepository myUserRepository;
 
     public MyDatabaseUserDetailsService(MyUserRepository myUserRepository) {
@@ -31,7 +33,8 @@ public class MyDatabaseUserDetailsService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
 
         List<GrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority(user.getRoles()));
-
+        session.setAttribute("username", user.getUsername());
+        System.out.println(session.getAttribute("username"));
         return new org.springframework.security.core.userdetails.User(
                 user.getUsername(),
                 user.getPassword(),

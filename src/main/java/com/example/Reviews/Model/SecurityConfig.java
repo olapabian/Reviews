@@ -32,25 +32,26 @@ public class SecurityConfig {
                         .requestMatchers("/register").permitAll() // Zezwolenie dla '/register'
                         .requestMatchers("/zarejestruj").permitAll()
                         //te trzeba będzie później usunąć
-                        .requestMatchers("/helloPage").permitAll()
-                        .requestMatchers("/home").permitAll()
-                        .requestMatchers("/home/addReviewForm").permitAll()
-                        .requestMatchers("/home/myReviewsForm").permitAll()
-                        .requestMatchers("/addReview").permitAll()
-                        .requestMatchers("/addReview/add").permitAll()
-                        .requestMatchers("/editReviewPage").permitAll()
-                        .requestMatchers("/myReview").permitAll()
-                        .requestMatchers("/myReview/deleteReview").permitAll()
-                        .requestMatchers("/myReviews").permitAll()
-                        .requestMatchers("/editReview").permitAll()
-                        .anyRequest().permitAll()
+//                        .requestMatchers("/helloPage").permitAll()
+//                        .requestMatchers("/home").authenticated()
+//                        .requestMatchers("/home").permitAll()
+//                        .requestMatchers("/home/addReviewForm").permitAll()
+//                        .requestMatchers("/home/myReviewsForm").permitAll()
+//                        .requestMatchers("/addReview").permitAll()
+//                        .requestMatchers("/addReview/add").permitAll()
+//                        .requestMatchers("/editReviewPage").permitAll()
+//                        .requestMatchers("/myReview").permitAll()
+//                        .requestMatchers("/myReview/deleteReview").permitAll()
+//                        .requestMatchers("/myReviews").permitAll()
+//                        .requestMatchers("/editReview").permitAll()
+//                        .anyRequest().permitAll()
                 )
                 .formLogin(form -> form
                         .usernameParameter("username")
                         .passwordParameter("password")
                         .loginPage("/login")
                         .failureUrl("/login?failed")
-                        .loginProcessingUrl("/login-process")
+                        .loginProcessingUrl("/login/process")
                         .defaultSuccessUrl("/home")
                 );
 //                .formLogin(form -> form
@@ -73,11 +74,6 @@ public class SecurityConfig {
 
     public SecurityConfig(MyUserRepository myUserRepository) {
         this.myUserRepository = myUserRepository;
-    }
-
-    @Bean
-    public UserDetailsService userDetailsService() {
-        return new MyDatabaseUserDetailsService(myUserRepository);
     }
 
 
