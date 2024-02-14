@@ -48,12 +48,18 @@ public class SecurityConfig {
                 .formLogin(form -> form
                         .usernameParameter("username")
                         .passwordParameter("password")
-
                         .loginPage("/login")
                         .failureUrl("/login?failed")
-                        .loginProcessingUrl("/login/process")
+                        .loginProcessingUrl("/login-process")
                         .defaultSuccessUrl("/home")
                 );
+//                .formLogin(form -> form
+//                        .loginPage("/login")
+//                        .failureUrl("/login?failed")
+//                        .loginProcessingUrl("/login/process")
+//                        .defaultSuccessUrl("/home")
+//                );
+
 
         return http.build();
     }
