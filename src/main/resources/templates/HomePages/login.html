@@ -19,7 +19,7 @@
         <p>Wpisz swoją nazwę użytkownika i hasło. Jeżeli zapomniałeś/łaś hasła skontaktuj się z administratorem strony</p>
 
         <!--na razie zrobie na moje potrzeby zeby dawalo od razu do home-->
-        <form th:action="@{/login-process}" class="logowanie" method="post">
+        <form th:action="@{/login/process}" class="logowanie" method="post">
             <div class="form-group">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" autofocus="autofocus" />
@@ -34,8 +34,7 @@
             </div>
 
             <div class="login">
-                <button type="submit">Zaloguj</button>
-
+                <button type="submit" value="Log in">Zaloguj</button>
             </div>
             
         </form>

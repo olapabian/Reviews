@@ -18,4 +18,5 @@ public class LoginController {
     public String HomePage(@RequestParam("username") String username) {
         return "redirect:/home";
     }
+
 }
