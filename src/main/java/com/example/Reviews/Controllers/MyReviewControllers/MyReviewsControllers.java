@@ -27,6 +27,11 @@ public class MyReviewsControllers {
                                 @RequestParam(defaultValue = "0") int page,
                                 @RequestParam(defaultValue = "3") int size,
                                 @RequestParam(defaultValue = "title_ASC") String sort) {
-        return myReviewsService.showMyReviewsPage(model, page, size, sort);
+        // Zapisanie wartości stronnicowania do sesji
+        httpSession.setAttribute("page", page);
+        httpSession.setAttribute("size", size);
+        httpSession.setAttribute("sort", sort);
+
+        return myReviewsService.showMyReviewsPage(model, httpSession, page, size, sort);
     }
 }

@@ -8,46 +8,33 @@
     <title>Registration Form</title>
 </head>
 <body>
-<h2>Registration Form</h2>
+<div class="item1">
 
-<a href="?lang=en">English</a>
-<a href="?lang=pl">Polish</a>
+<h1 th:text="#{registerregister}"></h1>
+</div>
+    <div class="układ">
 
-<form th:action="@{/zarejestruj}" method="post">
+<form th:action="@{/zarejestruj}" class="logowanie" method="post">
 
-    <label for="username">Username:</label>
+    <label for="username" th:text="#{login.username}"></label>
     <input type="text" id="username" name="username" required>
     <span th:text="${usernameError}" style="color: red"></span>
 
-    <label for="password">Password:</label>
+    <label for="password" th:text="#{login.password}"></label>
     <input type="text" id="password" name="password" required>
     <span th:text="${passwordError}" style="color: red"></span>
 
     <!-- Dodaj komunikat błędu, jeśli wystąpił błąd rejestracji -->
     <span th:text="${errorMessage}" style="color: red"></span>
-
-<<<<<<< HEAD
-    <button type="submit">Register</button>
+    <div class="login">
+    <button type="submit" th:text="#{hello.register}"></button>
+    </div>
 </form>
 
-<h1 th:text="#{nazwa}"></h1>
-<p th:text="#{nazwa.etykiety}"></p>
 
-
-=======
-</form>
-
-<!-- Dodaj sekcję do wyboru języka -->
-
-
-
-<h1 th:text="#{nazwa}"></h1>
-<p th:text="#{nazwa.etykiety}"></p>
-
-<button type="submit">Register</button>
->>>>>>> 85fefa3602b376ed16c85b69831de1b4cbb21ed3
-
-
+<a href="?lang=en">English</a>
+<a href="?lang=pl">Polish</a>
+</div>
 
 </body>
 </html>

@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/style/styles.css"/>
 </head>
 <body>
 <form th:action="@{/myReviews}" method="get">
     <!-- Pole wyboru dla ilości elementów na stronę -->
+    <!-- Pole wyboru dla ilości elementów na stronę -->
     <label for="size">Liczba elementów na stronę:</label>
     <select id="size" name="size">
-        <option value="3">3</option>
-        <option value="5">5</option>
-        <option value="10">10</option>
+        <option value="3" th:selected="${size == 3}">3</option>
+        <option value="5" th:selected="${size == 5}">5</option>
+        <option value="10" th:selected="${size == 10}">10</option>
     </select>
+
 
     <!-- Pole wyboru dla sposobu sortowania -->
     <label for="sort">Sortowanie:</label>

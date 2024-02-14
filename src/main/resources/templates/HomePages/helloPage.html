@@ -3,39 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-     <link rel="stylesheet" href="/style/styles.css"/>
-<!--    <link rel="stylesheet" href="/src/main/resources/static/style/styles.css"/>-->
+    <link rel="stylesheet" href="/style/styles.css"/>
+    <!--    <link rel="stylesheet" href="/src/main/resources/static/style/styles.css"/>-->
 </head>
 <body>
-    <div class="container"> 
+<div class="container">
 
-        <div class="item1">
+    <div class="item1">
         <h1>Recenzjomacz</h1>
-        </div>
+    </div>
 
-        <div>
-            <center>
-            <p>Twój prywatny notes do zapisywania i dodawania obejrzanych filmów</p>                
-            </center>
-        </div>
+    <div>
+        <center>
+            <p th:text="#{hello.opis}"></p>
+        </center>
+    </div>
+    <br>
+
+    <div class="item2">
+        <h2 class="zaloguj" th:text="#{hello.zaloguj}"></h2>
         <br>
+        <div class="przyciski">
+            <form action="/login" method="get">
+                <button type="submit" th:text="#{hello.login}"> </button>
+            </form>
 
-        <div class="item2">
-            <h2 class="zaloguj">Aby uzyskać dostęp do swoich danych musisz się zalogować lub utworzyć nowe konto</h2>
-            <br>
-            <div class="przyciski">
-                <form action="/login" method="get">
-                    <button type="submit">Login</button>
-                </form>
 
-                <form action="/register" method="get">
-                    <button type="submit">Rejestracja</button>
-                </form>
+            <form action="/register" method="get">
+                <button type="submit" th:text="#{hello.register}"></button>
+            </form>
         </div>
+    </div>
+
+    <a href="?lang=en">English</a>
+    <a href="?lang=pl">Polish</a>
+
+</div>
 
 
+<footer class="wrapper">Aleksandra Pabian, Julia Grzankowska</footer>
 
-            <footer class="wrapper">Aleksandra Pabian, Julia Grzankowska</footer>
 
 </body>
 </html>
