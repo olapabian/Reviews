@@ -9,6 +9,11 @@ body {
 	min-height: 100vh;
 }
 
+a {
+    text-align: center;
+    color: white;
+    }
+
 footer {
 	position: fixed;
 	width: 100%;
