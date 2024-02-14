@@ -10,14 +10,15 @@
     <div class="powrot">
         <button type="goback">Powrót</button>
     </div>
-    <div class="układ">
+    <div class="układ"> 
 
-        <div class="item1">
+        <div class="item1"> 
             <h1>Logowanie</h1>
         </div>
 
         <p>Wpisz swoją nazwę użytkownika i hasło. Jeżeli zapomniałeś/łaś hasła skontaktuj się z administratorem strony</p>
 
+        <!--na razie zrobie na moje potrzeby zeby dawalo od razu do home-->
         <form th:action="@{/login/process}" class="logowanie" method="post">
             <div class="form-group">
                 <label for="username">Username:</label>
@@ -35,9 +36,24 @@
             <div class="login">
                 <button type="submit" value="Log in">Zaloguj</button>
             </div>
-
+            
         </form>
 
+        <a href="?lang=en">English</a>
+        <a href="?lang=pl">Polski</a>
+
+        <element th:text="#{etykieta}"></element>
+        <h1 th:text="#{nazwa}"></h1>
+        <p th:text="#{nazwa.etykiety}"></p>
+
+        <!--<form th:action="@{/login}" method="post">-->
+        <!--    <label for="username">Username</label>:-->
+        <!--    <input type="text" id="username" name="username"-->
+        <!--           autofocus="autofocus" /> <br />-->
+        <!--    <label for="password">Password</label>:-->
+        <!--    <input type="password" id="password" name="password" /> <br />-->
+        <!--    <input type="submit" value="Log in" />-->
+        <!--</form>-->
     </div>
 
 </body>
