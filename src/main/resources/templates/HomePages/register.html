@@ -4,27 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style/styles.css"/>
+
     <title>Registration Form</title>
 </head>
 <body>
 <h2>Registration Form</h2>
+
+<a href="?lang=en">English</a>
+<a href="?lang=pl">Polish</a>
+
 <form th:action="@{/zarejestruj}" method="post">
 
     <label for="username">Username:</label>
     <input type="text" id="username" name="username" required>
-    <!-- Dodaj komunikat błędu, jeśli nazwa użytkownika jest pusta -->
     <span th:text="${usernameError}" style="color: red"></span>
 
     <label for="password">Password:</label>
     <input type="text" id="password" name="password" required>
-    <!-- Dodaj komunikat błędu, jeśli hasło jest puste -->
     <span th:text="${passwordError}" style="color: red"></span>
 
     <!-- Dodaj komunikat błędu, jeśli wystąpił błąd rejestracji -->
     <span th:text="${errorMessage}" style="color: red"></span>
 
-
-    <button type="submit">Register</button>
 </form>
+
+<!-- Dodaj sekcję do wyboru języka -->
+
+
+
+<h1 th:text="#{nazwa}"></h1>
+<p th:text="#{nazwa.etykiety}"></p>
+
+<button type="submit">Register</button>
+
+
+
 </body>
 </html>
