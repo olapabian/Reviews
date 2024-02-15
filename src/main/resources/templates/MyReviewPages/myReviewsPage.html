@@ -1,44 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/style/styles.css"/>
 </head>
 <body>
-<form th:action="@{/myReviews}" method="get">
-    <!-- Pole wyboru dla ilości elementów na stronę -->
-    <label for="size">Liczba elementów na stronę:</label>
-    <select id="size" name="size">
-        <option value="3">3</option>
-        <option value="5">5</option>
-        <option value="10">10</option>
-    </select>
 
-    <!-- Pole wyboru dla sposobu sortowania -->
-    <label for="sort">Sortowanie:</label>
-    <select id="sort" name="sort">
-        <option value="title_ASC">Tytuł (rosnąco)</option>
-        <option value="title_DESC">Tytuł (malejąco)</option>
-        <option value="releaseYear_ASC">Rok wydania (rosnąco)</option>
-        <option value="releaseYear_DESC">Rok wydania (malejąco)</option>
-    </select>
-
-    <button type="submit">Ustaw</button>
-</form>
-<div th:each="movie:${movieList}">
-    <p th:text="${movie.getTitle()}"></p>
-    <form th:action="@{/myReview}" method="get">
-        <input type="hidden" th:name="id" th:value="${movie.id}" />
-            <button type="submit">Przejdź do recenzji</button>
-    </form>
+<div class="item1">
+    <h1>Moje recenzje</h1>
 </div>
-<div th:if="${movieList.hasNext()}">
+<div class="item2">
     <form th:action="@{/myReviews}" method="get">
-        <!-- Inkrementuj numer strony, gdy użytkownik przechodzi do następnej strony -->
-        <input type="hidden" name="page" th:value="${movieList.nextPageable().getPageNumber()}" />
-        <!-- Nie musisz przekazywać parametru "size", ponieważ zostanie on automatycznie zachowany -->
-        <button type="submit">Następna strona</button>
+        <!-- Pole wyboru dla ilości elementów na stronę -->
+        <label for="size">Liczba elementów na stronę:</label>
+        <select id="size" name="size">
+            <option value="3">3</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+        </select>
+
+        <!-- Pole wyboru dla sposobu sortowania -->
+        <label for="sort">Sortowanie:</label>
+        <select id="sort" name="sort">
+            <option value="title_ASC">Tytuł (rosnąco)</option>
+            <option value="title_DESC">Tytuł (malejąco)</option>
+            <option value="releaseYear_ASC">Rok wydania (rosnąco)</option>
+            <option value="releaseYear_DESC">Rok wydania (malejąco)</option>
+        </select>
+
+        <button type="submit">Ustaw</button>
     </form>
+
+
+    <div th:each="movie:${movieList}">
+        <p th:text="${movie.getTitle()}"></p>
+        <form th:action="@{/myReview}" method="get">
+            <input type="hidden" th:name="id" th:value="${movie.id}" />
+                <button type="submit">Przejdź do recenzji</button>
+        </form>
+    </div>
+    <div th:if="${movieList.hasNext()}">
+        <form th:action="@{/myReviews}" method="get">
+            <!-- Inkrementuj numer strony, gdy użytkownik przechodzi do następnej strony -->
+            <input type="hidden" name="page" th:value="${movieList.nextPageable().getPageNumber()}" />
+            <!-- Nie musisz przekazywać parametru "size", ponieważ zostanie on automatycznie zachowany -->
+            <br>
+            <button type="submit">Następna strona</button>
+        </form>
+    </div>
 </div>
 </body>
 </html>

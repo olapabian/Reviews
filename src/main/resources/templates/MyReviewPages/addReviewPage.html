@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/style/styles.css"/>
 </head>
 <body>
-    dodawnai recenzji
+<div class="item1">
+    <h1>Dodaj recenzje</h1>
+</div>
+
+<div class="item2">
     <form th:action="@{/addReview/add}" method="post">
-        <div class="form-group">
+        <div class="form-group2">
             <h2>Dodaj recenzje filmu</h2>
             <label>Tytuł</label>
             <input type="text" name="Title" required>
@@ -47,5 +52,6 @@
             <button type="submit">Dodaj film</button>
         </div>
     </form>
+</div>
 </body>
 </html>

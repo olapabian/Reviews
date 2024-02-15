@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/style/styles.css"/>
 </head>
 <body>
-    recenzja pojedyncza
-    <label>Tytul</label>
-    <p th:text="${movie.getTitle()}"></p>
-    <p th:text="${review.getText()}"></p>
-    <p th:text="${review.getRate()}"></p>
+<div class="item1">
+    <h1 th:text="${movie.getTitle()}"></h1>
+</div>
+<div class="item2">
+Opis:<p th:text="${review.getText()}"></p>
+Ocena:<p th:text="${review.getRate()}"></p>
+
 <!--    <p th:text="${phothos.get(0).getUrl()}"></p>-->
 
 <!--    <img th:src="${phothos.get(0).getUrl()}" alt="Opis obrazu" />-->
 <!--    nie dziala to img-->
+
     <form th:action="@{/myReview/deleteReview}" method="post">
         <input type="hidden" th:name="id" th:value="${movie.id}" />
         <button type="submit">Usuń recenzje</button>
@@ -22,5 +26,6 @@
         <input type="hidden" th:name="id" th:value="${movie.id}" />
         <button type="submit">Edytuj recenzje</button>
     </form>
+</div>
 </body>
 </html>

@@ -35,6 +35,7 @@ br {
 	text-align: center;
 }
 
+
 .container {
 	width: 80%;
 	margin: 0 auto;
@@ -73,8 +74,8 @@ button[type="submit"] {
 	cursor: pointer; 
 	background-color: #9d76d4;
 	padding: 20px;
-	width: 150px;
-	height: 40px;
+	min-width: 150px;
+	min-height: 40px;
 	color: #ffffff;
 	text-align: center;
 	line-height: 0px;
@@ -165,6 +166,29 @@ input[type="password"] {
     transform: scale(1.1); /* Powiększenie przycisku po najechaniu */
 }
 
+
+        .form-group2 {
+            margin-bottom: 20px;
+        }
+
+        .form-group2 label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group2 input {
+            width: 100%;
+            padding: 5px;
+        }
+
+        .form-group2 button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
 
 
 
