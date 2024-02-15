@@ -34,7 +34,6 @@ public class MyDatabaseUserDetailsService implements UserDetailsService {
 
         List<GrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority(user.getRoles()));
         session.setAttribute("username", user.getUsername());
-        System.out.println(session.getAttribute("username"));
         return new org.springframework.security.core.userdetails.User(
                 user.getUsername(),
                 user.getPassword(),

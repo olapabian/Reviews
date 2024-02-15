@@ -18,6 +18,9 @@ public class MyUserDTO {
     private String password;
     private String roles;
 
+    public MyUserDTO(String testUser, String password) {
+    }
+
 //    private String confirmPassword;
 //
 //    // Metoda zwracająca potwierdzenie hasła

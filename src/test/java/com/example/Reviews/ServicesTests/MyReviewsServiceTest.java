@@ -58,12 +58,11 @@ public class MyReviewsServiceTest {
         int page = 0;
         int size = 10;
         String sort = "field_asc"; // Poprawiony format łańcucha sortowania
-
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.fromString(sort.substring(sort.lastIndexOf("_") + 1)), sort.substring(0, sort.lastIndexOf("_"))));
         when(movieRepository.findAllByUserId(myUser.getId(), pageable)).thenReturn(moviePage);
 
         // Call the method
-        String result = myReviewsService.showMyReviewsPage(model, page, size, sort);
+        String result = myReviewsService.showMyReviewsPage(model, session,page, size, sort);
 
         // Verify interactions
         verify(session, times(1)).getAttribute("username");

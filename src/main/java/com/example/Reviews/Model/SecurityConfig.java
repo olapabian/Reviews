@@ -26,25 +26,26 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests(authorize -> authorize
+                        //dostep zawsze
                         .requestMatchers("/helloPage").permitAll()
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/style/**").permitAll()
                         .requestMatchers("/register").permitAll() // Zezwolenie dla '/register'
                         .requestMatchers("/zarejestruj").permitAll()
-                        //te trzeba będzie później usunąć
-//                        .requestMatchers("/helloPage").permitAll()
-//                        .requestMatchers("/home").authenticated()
-//                        .requestMatchers("/home").permitAll()
-//                        .requestMatchers("/home/addReviewForm").permitAll()
-//                        .requestMatchers("/home/myReviewsForm").permitAll()
-//                        .requestMatchers("/addReview").permitAll()
-//                        .requestMatchers("/addReview/add").permitAll()
-//                        .requestMatchers("/editReviewPage").permitAll()
-//                        .requestMatchers("/myReview").permitAll()
-//                        .requestMatchers("/myReview/deleteReview").permitAll()
-//                        .requestMatchers("/myReviews").permitAll()
-//                        .requestMatchers("/editReview").permitAll()
-//                        .anyRequest().permitAll()
+
+                        //dostep jak jestes zalogowany
+                        .requestMatchers("/home").authenticated()
+                        .requestMatchers("/").authenticated()
+                        .requestMatchers("/home/addReviewForm").authenticated()
+                        .requestMatchers("/home/myReviewsForm").authenticated()
+                        .requestMatchers("/addReview").authenticated()
+                        .requestMatchers("/addReview/add").authenticated()
+                        .requestMatchers("/editReviewPage").authenticated()
+                        .requestMatchers("/myReview").authenticated()
+                        .requestMatchers("/myReview/deleteReview").authenticated()
+                        .requestMatchers("/myReviews").authenticated()
+                        .requestMatchers("/editReview").authenticated()
+                        .anyRequest().permitAll()
                 )
                 .formLogin(form -> form
                         .usernameParameter("username")

@@ -18,15 +18,24 @@ import org.springframework.ui.Model;
 
 import java.util.Optional;
 
+// Import sesji HTTP
+
 @AllArgsConstructor
 @Service
 public class MyReviewsService {
     private final MovieRepository movieRepository;
-    @Autowired
-    private HttpSession session;
     private final MyUserRepository myUserRepository;
 
-    public String showMyReviewsPage(Model model, int page, int size, String sort) {
+    // Przekazanie sesji HTTP jako argument metody
+    public String showMyReviewsPage(Model model, HttpSession session, int page, int size, String sort) {
+        // Sprawdzenie, czy sesja zawiera wartości stronnicowania
+        if(session.getAttribute("page") != null)
+            page = (int) session.getAttribute("page");
+        if(session.getAttribute("size") != null)
+            size = (int) session.getAttribute("size");
+        if(session.getAttribute("sort") != null)
+            sort = (String) session.getAttribute("sort");
+
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.fromString(sort.substring(sort.lastIndexOf("_") + 1)), sort.substring(0, sort.lastIndexOf("_"))));
 
         //Pobranie username

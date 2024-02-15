@@ -3,42 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="/style/styles.css"/>
-    <!--   <link rel="stylesheet" href="/src/main/resources/static/style/styles.css"/>-->
+     <link rel="stylesheet" href="/style/styles.css"/>
+<!--   <link rel="stylesheet" href="/src/main/resources/static/style/styles.css"/>-->
 </head>
 <body>
-
-<!--    <div class="powrot">-->
-<!--        <button type="goback" th:text="#{button.powrot}"></button>-->
-<!--    </div>-->
-
-    <div class="item1">
-        <h1 th:text="#{login.login}"></h1>
+    <div class="powrot">
+        <button type="goback">Powrót</button>
     </div>
-        <div class="układ">
+    <div class="układ"> 
 
-            <p th:text="#{login.opis}"></p>
+        <div class="item1"> 
+            <h1>Logowanie</h1>
+        </div>
 
-            <!--na razie zrobie na moje potrzeby zeby dawalo od razu do home-->
-            <form th:action="@{/login/process}" class="logowanie" method="post">
-                <div class="form-group">
-                    <label for="username" th:text="#{login.username}"></label>
-                    <input type="text" id="username" name="username" autofocus="autofocus" />
-                </div>
-                <div class="form-group">
-                    <label for="password" th:text="#{login.password}"></label>
-                    <input type="password" id="password" name="password" />
-                </div>
+        <p>Wpisz swoją nazwę użytkownika i hasło. Jeżeli zapomniałeś/łaś hasła skontaktuj się z administratorem strony</p>
 
-                <div th:if="${param.error}">
-                    <p>Invalid username and password.</p>
-                </div>
+        <!--na razie zrobie na moje potrzeby zeby dawalo od razu do home-->
+        <form th:action="@{/login/process}" class="logowanie" method="post">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" autofocus="autofocus" />
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" />
+            </div>
 
-                <div class="login">
-                    <button type="submit" value="Log in" th:text="#{hello.login}"></button>
-                </div>
+            <div th:if="${param.error}">
+                <p>Invalid username and password.</p>
+            </div>
 
-            </form>
+            <div class="login">
+                <button type="submit" value="Log in">Zaloguj</button>
+            </div>
+            
+        </form>
 
         <a href="?lang=en">English</a>
         <a href="?lang=pl">Polski</a>
