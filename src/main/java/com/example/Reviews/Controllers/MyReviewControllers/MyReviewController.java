@@ -29,8 +29,12 @@ public class MyReviewController {
     private final MovieRepository movieRepository;
     private final PhotoRepository photoRepository;
     private final MyReviewService myReviewService;
+
+
     @GetMapping
     public String MyReviewPage(@RequestParam("id") Long id, Model model) {
+        List<Photo> photos = photoRepository.findAll();
+        model.addAttribute("photos", photos);
         return myReviewService.showMyReviewPage(id, model);
     }
 

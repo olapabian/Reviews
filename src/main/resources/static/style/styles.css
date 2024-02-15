@@ -166,7 +166,6 @@ input[type="password"] {
     transform: scale(1.1); /* Powiększenie przycisku po najechaniu */
 }
 
-
         .form-group2 {
             margin-bottom: 20px;
         }
@@ -190,6 +189,24 @@ input[type="password"] {
             cursor: pointer;
         }
 
+
+/*zdjęcia*/
+.zdjecie {
+    margin: 10px;
+    max-width: 400px; /* Maksymalna szerokość zdjęcia */
+    max-height: 400px; /* Maksymalna szerokość zdjęcia */
+    border: 2px solid black; /* Grubość i styl obramowania */
+    padding: 5px; /* Wypełnienie wewnątrz obramowania */
+
+}
+
+.zdjecia {
+     display: inline-block;
+}
+
+.zdjecia-container {
+    text-align: center; /* Wyśrodkowanie zawartości w poziomie */
+}
 
 
 
